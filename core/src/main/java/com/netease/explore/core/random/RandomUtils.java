@@ -18,6 +18,8 @@ public class RandomUtils
 	public static Random respectPeopleRandom = new Random();
 	public static List<String> respectPeopleList;
 
+	public static Random numberRandom = new Random();
+
 	static
 	{
 		String[] teaSplit = teaContent.split("、");
@@ -44,5 +46,13 @@ public class RandomUtils
 		int randomIndex = respectPeopleRandom.nextInt(respectPeopleList.size());
 		return "受尊敬的人：" + respectPeopleList.get(randomIndex);
 
+	}
+
+	/**
+	 * 返回随机数
+	 */
+	public static String getRandomStr()
+	{
+		return String.valueOf(numberRandom.nextInt(100000000));
 	}
 }
