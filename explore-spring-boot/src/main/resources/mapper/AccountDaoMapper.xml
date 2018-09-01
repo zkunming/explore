@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.netease.explore.spring.dao.AccountDao">
+
+    <resultMap id="BaseResultMap" type="com.netease.explore.spring.domain.Account">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="balance" property="balance" jdbcType="DECIMAL"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id,
+        user_id,
+        type,
+        balance,
+        version,
+        create_time,
+        update_time
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO account (
+            user_id,
+            type,
+            balance,
+            version,
+            id,
+            create_time,
+            update_time
+        ) VALUES (
+            #{userId,jdbcType=VARCHAR},
+            #{type,jdbcType=VARCHAR},
+            #{balance,jdbcType=DECIMAL},
+            #{version,jdbcType=INTEGER},
+            #{id,jdbcType=VARCHAR},
+            now(),
+            now()
+        )
+    </insert>
+
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId!=null">user_id,</if>
+            <if test="type!=null">type,</if>
+            <if test="balance!=null">balance,</if>
+            <if test="version!=null">version,</if>
+            <if test="id!=null">id,</if>
+            <if test="createTime!=null">create_time,</if>
+            <if test="updateTime!=null">update_time,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId!=null">#{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="type!=null">#{type,jdbcType=VARCHAR},
+            </if>
+            <if test="balance!=null">#{balance,jdbcType=DECIMAL},
+            </if>
+            <if test="version!=null">#{version,jdbcType=INTEGER},
+            </if>
+            <if test="id!=null">#{id,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime!=null">#{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime!=null">#{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+
+    <insert id="insertList">
+        INSERT INTO account (
+        <include refid="Base_Column_List"/>
+        )VALUES
+        <foreach collection="accounts" item="account" index="index" separator=",">
+            (
+            #{userId,jdbcType=VARCHAR},
+            #{type,jdbcType=VARCHAR},
+            #{balance,jdbcType=DECIMAL},
+            #{version,jdbcType=INTEGER},
+            #{id,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+
+    <update id="update">
+        UPDATE account
+        <set>
+            <if test="userId != null">user_id= #{userId,jdbcType=VARCHAR},</if>
+            <if test="type != null">type= #{type,jdbcType=VARCHAR},</if>
+            <if test="balance != null">balance= #{balance,jdbcType=DECIMAL},</if>
+            <if test="version != null">version= #{version,jdbcType=INTEGER},</if>
+            <if test="id != null">id= #{id,jdbcType=VARCHAR},</if>
+            <if test="createTime != null">create_time= #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">update_time= #{updateTime,jdbcType=TIMESTAMP}</if>
+        </set>
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="findByUserIdAndType" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from account
+        where user_id=#{userId,jdbcType=VARCHAR}
+        and type=#{type,jdbcType=VARCHAR}
+    </select>
+</mapper>
+

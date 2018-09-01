@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出 -->
+<configuration status="OFF">
+    <!-- 先定义所有的appender -->
+    <appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d - %logger{3} [%thread] %-5level %class{3}(%line) %MDC{requestId} - %msg%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="dailyFile" fileName="log/explore_spring.log" immediateFlush="true"
+                                 filePattern="log/explore_spring.log.%d{yyyy-MM-dd}">
+            <PatternLayout>
+                <Pattern>%d - %logger{3} [%thread] %-5level %class{3}(%line) %MDC{requestId} - %msg%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="accessLogFile" fileName="log/explore_spring_access.log" immediateFlush="true"
+                                 filePattern="log/explore_spring_access.log.%d{yyyy-MM-dd}">
+            <PatternLayout>
+                <Pattern>%msg %MDC{requestId} {%thread}%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="traceLogger" fileName="log/explore_spring_trace.log" immediateFlush="true"
+                                 filePattern="log/explore_spring_trace.log.%d{yyyy-MM-dd}">
+            <PatternLayout>
+                <Pattern>%m%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+        </RollingRandomAccessFile>
+
+    </appenders>
+
+    <!-- 然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
+    <loggers>
+
+        <root level="DEBUG" includeLocation="true">
+            <appender-ref ref="console"/>
+            <appender-ref ref="dailyFile"/>
+            <appender-ref ref="accessLogFile"/>
+            <appender-ref ref="traceLogger"/>
+        </root>
+
+        <!-- 针对包级别设置日志输出级别 -->
+        <logger name="org.apache.zookeeper" level="info"/>
+        <logger name="org.apache.curator" level="info"/>
+    </loggers>
+</configuration>
