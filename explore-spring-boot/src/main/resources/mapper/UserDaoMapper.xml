@@ -1,87 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.netease.explore.spring.dao.UserDao">
-    <resultMap id="BaseResultMap" type="com.netease.explore.spring.domain.User">
-        <result column="id" property="id" jdbcType="VARCHAR"/>
-        <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="create_time" property="createTime"/>
-        <result column="update_time" property="updateTime"/>
-    </resultMap>
+  <resultMap id="BaseResultMap" type="com.netease.explore.spring.domain.User">
+    <result column="id" property="id" jdbcType="VARCHAR"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime"/>
+    <result column="update_time" property="updateTime"/>
+  </resultMap>
 
-    <sql id="Base_Column_List">
-        id,
-        name,
-        create_time,
-        update_time
-    </sql>
+  <sql id="Base_Column_List">
+    id,
+    name,
+    create_time,
+    update_time
+  </sql>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user (
-            id,
-            name,
-            create_time,
-            update_time
-        ) VALUES (
-            #{id},
-            #{name},
-            now(),
-            now()
-        )
-    </insert>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO user (
+    id,
+    name,
+    create_time,
+    update_time
+    ) VALUES (
+    #{id},
+    #{name},
+    now(),
+    now()
+    )
+  </insert>
 
-    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id!=null">id,</if>
-            <if test="name!=null">name,</if>
-            <if test="createTime!=null">create_time,</if>
-            <if test="updateTime!=null">update_time</if>
-        </trim>
-        VALUES
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id!=null">#{id},</if>
-            <if test="name!=null">#{name},</if>
-            <if test="createTime!=null">#{createTime},</if>
-            <if test="updateTime!=null">#{updateTime}</if>
-        </trim>
-    </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id!=null">id,</if>
+      <if test="name!=null">name,</if>
+      <if test="createTime!=null">create_time,</if>
+      <if test="updateTime!=null">update_time</if>
+    </trim>
+    VALUES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id!=null">#{id},</if>
+      <if test="name!=null">#{name},</if>
+      <if test="createTime!=null">#{createTime},</if>
+      <if test="updateTime!=null">#{updateTime}</if>
+    </trim>
+  </insert>
 
-    <insert id="insertList">INSERT INTO user(
-        <include refid="Base_Column_List"/>
-        )VALUES
-        <foreach collection="users" item="user" index="index" separator=",">
-            (
-            #{id},
-            #{name},
-            #{createTime},
-            #{updateTime}
-            )
-        </foreach>
-    </insert>
+  <insert id="insertList">INSERT INTO user(
+    <include refid="Base_Column_List"/>
+    )VALUES
+    <foreach collection="users" item="user" index="index" separator=",">
+      (
+      #{id},
+      #{name},
+      #{createTime},
+      #{updateTime}
+      )
+    </foreach>
+  </insert>
 
-    <update id="update">
-        UPDATE user
-        <set>
-            <if test="id != null">id = #{id},</if>
-            <if test="name != null">name = #{name},</if>
-            <if test="createTime != null">create_time = #{createTime},</if>
-            <if test="updateTime != null">update_time = #{updateTime}</if>
-        </set>
-        WHERE id = #{id,jdbcType=VARCHAR}
-    </update>
+  <update id="update">
+    UPDATE user
+    <set>
+      <if test="id != null">id = #{id},</if>
+      <if test="name != null">name = #{name},</if>
+      <if test="createTime != null">create_time = #{createTime},</if>
+      <if test="updateTime != null">update_time = #{updateTime}</if>
+    </set>
+    WHERE id = #{id,jdbcType=VARCHAR}
+  </update>
 
-    <select id="findById" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where id=#{id,jdbcType=VARCHAR}
-    </select>
+  <select id="findById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where id=#{id,jdbcType=VARCHAR}
+  </select>
 
-    <select id="findByName" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where name=${name}
-    </select>
+  <select id="findByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where name=${name}
+  </select>
 </mapper>
 

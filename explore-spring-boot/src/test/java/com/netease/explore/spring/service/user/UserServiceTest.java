@@ -6,30 +6,27 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UserServiceTest extends BaseMockTest
-{
-	@Autowired
-	private UserService userService;
+public class UserServiceTest extends BaseMockTest {
 
-	@Test
-	public void testTransaction()
-	{
-		userService.transaction();
-	}
+  @Autowired
+  private UserService userService;
 
-	@Test
-	public void testFindById()
-	{
-		User user = userService.findById("1");
-		Assert.assertNotNull(user);
-	}
+  @Test
+  public void testTransaction() {
+    userService.transaction();
+  }
 
-	@Test
-	public void testInsert()
-	{
-		User user = new User();
-		user.setId(getDistributeId());
-		user.setName("testHelloMock test");
-		userService.insert(user);
-	}
+  @Test
+  public void testFindById() {
+    User user = userService.findById("1");
+    Assert.assertNotNull(user);
+  }
+
+  @Test
+  public void testInsert() {
+    User user = new User();
+    user.setId(getDistributeId());
+    user.setName("testHelloMock test");
+    userService.insert(user);
+  }
 }

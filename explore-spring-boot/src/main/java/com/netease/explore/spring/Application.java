@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication(scanBasePackages = "com.netease.explore")
 @EnableTransactionManagement
-public class Application
-{
-	@RequestMapping("/")
-	public String index()
-	{
-		return "Hello!";
-	}
+public class Application {
 
-	public static void main(String[] args)
-	{
-		SpringApplication.run(Application.class);
-	}
+  @RequestMapping("/")
+  public String index() {
+    return "Hello!";
+  }
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class);
+  }
 
 }

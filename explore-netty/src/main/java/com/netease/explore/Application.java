@@ -2,33 +2,33 @@ package com.netease.explore;
 
 import com.netease.explore.netty.DiscardServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class Application
-{
-	public static void main(String[] args) throws InterruptedException
-	{
-		ServerBootstrap serverBootstrap = new ServerBootstrap();
-		EventLoopGroup bossGroup = new NioEventLoopGroup();
-		EventLoopGroup wokerGroup = new NioEventLoopGroup();
+public class Application {
 
-		serverBootstrap.group(bossGroup, wokerGroup).channel(NioServerSocketChannel.class).childHandler(
-				new ChannelInitializer<SocketChannel>()
-				{
-					@Override
-					protected void initChannel(SocketChannel ch) throws Exception
-					{
-						ch.pipeline().addLast(new DiscardServerHandler());
-					}
-				})
-				.option(ChannelOption.SO_BACKLOG, 128)
-				.childOption(ChannelOption.SO_KEEPALIVE, true);
+  public static void main(String[] args) throws InterruptedException {
+    ServerBootstrap serverBootstrap = new ServerBootstrap();
+    EventLoopGroup bossGroup = new NioEventLoopGroup();
+    EventLoopGroup wokerGroup = new NioEventLoopGroup();
 
-		ChannelFuture channelFuture = serverBootstrap.bind(8080).sync(); // (7)
+    serverBootstrap.group(bossGroup, wokerGroup).channel(NioServerSocketChannel.class).childHandler(
+        new ChannelInitializer<SocketChannel>() {
+          @Override
+          protected void initChannel(SocketChannel ch) throws Exception {
+            ch.pipeline().addLast(new DiscardServerHandler());
+          }
+        })
+        .option(ChannelOption.SO_BACKLOG, 128)
+        .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-		channelFuture.channel().closeFuture().sync();
-	}
+    ChannelFuture channelFuture = serverBootstrap.bind(8080).sync(); // (7)
+
+    channelFuture.channel().closeFuture().sync();
+  }
 }

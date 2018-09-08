@@ -1,22 +1,20 @@
 package com.netease.explore.spring.dao;
 
-import com.netease.explore.core.dao.BaseDao;
 import com.netease.explore.spring.domain.User;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Mapper
 @Repository
-public interface UserDao
-{
-	int insert(User user);
+public interface UserDao {
 
-	int insertSelective(@Param("user") User user);
+  int insert(User user);
 
-	int insertList(@Param("users") List<User> users);
+  int insertSelective(@Param("user") User user);
 
-	List<User> findByName(@Param("name") String name);
+  int insertList(@Param("users") List<User> users);
+
+  List<User> findByName(@Param("name") String name);
 }

@@ -2,43 +2,36 @@ package com.netease.explore.spring.service.account;
 
 import com.netease.explore.spring.BaseMockTest;
 import com.netease.explore.spring.domain.Account;
+import java.math.BigDecimal;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.math.BigDecimal;
+public class AccountServiceTest extends BaseMockTest {
 
-import static org.junit.Assert.*;
+  @Autowired
+  private AccountService accountService;
 
-public class AccountServiceTest extends BaseMockTest
-{
-	@Autowired
-	private AccountService accountService;
+  @Test
+  public void insert() {
+    Account account = new Account();
+    account.setId(getDistributeId());
+    account.setUserId(getDistributeId());
+    account.setBalance(new BigDecimal("1000"));
+    account.setType("cyn");
+    account.setVersion(1);
 
-	@Test
-	public void insert()
-	{
-		Account account = new Account();
-		account.setId(getDistributeId());
-		account.setUserId(getDistributeId());
-		account.setBalance(new BigDecimal("1000"));
-		account.setType("cyn");
-		account.setVersion(1);
+    accountService.insert(account);
+  }
 
-		accountService.insert(account);
-	}
+  @Test
+  public void insertSelective() {
+  }
 
-	@Test
-	public void insertSelective()
-	{
-	}
+  @Test
+  public void insertList() {
+  }
 
-	@Test
-	public void insertList()
-	{
-	}
-
-	@Test
-	public void update()
-	{
-	}
+  @Test
+  public void update() {
+  }
 }

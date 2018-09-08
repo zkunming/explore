@@ -1,40 +1,34 @@
 package com.netease.explore.zookeeper.util;
 
-import org.apache.zookeeper.data.Stat;
-
 import java.io.UnsupportedEncodingException;
+import org.apache.zookeeper.data.Stat;
 
 /**
  * 封装zookeeper节点信息
  */
-public class ZooKeeperNode
-{
-	private Object data;
-	private Stat stat;
+public class ZooKeeperNode {
 
-	public ZooKeeperNode(byte[] bytes, Stat stat) throws UnsupportedEncodingException
-	{
-		this.data = new String(bytes, "UTF-8");
-		this.stat = stat;
-	}
+  private Object data;
+  private Stat stat;
 
-	public Object getData()
-	{
-		return data;
-	}
+  public ZooKeeperNode(byte[] bytes, Stat stat) throws UnsupportedEncodingException {
+    this.data = new String(bytes, "UTF-8");
+    this.stat = stat;
+  }
 
-	public void setData(Object data)
-	{
-		this.data = data;
-	}
+  public Object getData() {
+    return data;
+  }
 
-	public Stat getStat()
-	{
-		return stat;
-	}
+  public void setData(Object data) {
+    this.data = data;
+  }
 
-	public void setStat(Stat stat)
-	{
-		this.stat = stat;
-	}
+  public Stat getStat() {
+    return stat;
+  }
+
+  public void setStat(Stat stat) {
+    this.stat = stat;
+  }
 }

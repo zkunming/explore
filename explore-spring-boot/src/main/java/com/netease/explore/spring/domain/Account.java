@@ -1,70 +1,61 @@
 package com.netease.explore.spring.domain;
 
 import com.netease.explore.core.dao.BaseDomain;
-
 import java.math.BigDecimal;
 
 /**
  * 账户表
  */
-public class Account extends BaseDomain
-{
-	/**
-	 * 用户id
-	 */
-	private String userId;
+public class Account extends BaseDomain {
 
-	/**
-	 * 账户类型
-	 */
-	private String type;
-	/**
-	 * 账户余额
-	 */
-	private BigDecimal balance;
+  /**
+   * 用户id
+   */
+  private String userId;
 
-	/**
-	 * 版本【数据库乐观锁控制】
-	 */
-	private Integer version;
+  /**
+   * 账户类型
+   */
+  private String type;
+  /**
+   * 账户余额
+   */
+  private BigDecimal balance;
 
-	public String getUserId()
-	{
-		return userId;
-	}
+  /**
+   * 版本【数据库乐观锁控制】
+   */
+  private Integer version;
 
-	public void setUserId(String userId)
-	{
-		this.userId = userId;
-	}
+  public String getUserId() {
+    return userId;
+  }
 
-	public BigDecimal getBalance()
-	{
-		return balance;
-	}
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 
-	public void setBalance(BigDecimal balance)
-	{
-		this.balance = balance;
-	}
+  public BigDecimal getBalance() {
+    return balance;
+  }
 
-	public Integer getVersion()
-	{
-		return version;
-	}
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
 
-	public void setVersion(Integer version)
-	{
-		this.version = version;
-	}
+  public Integer getVersion() {
+    return version;
+  }
 
-	public String getType()
-	{
-		return type;
-	}
+  public void setVersion(Integer version) {
+    this.version = version;
+  }
 
-	public void setType(String type)
-	{
-		this.type = type;
-	}
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
 }

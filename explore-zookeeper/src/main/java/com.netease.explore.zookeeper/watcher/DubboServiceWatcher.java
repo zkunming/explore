@@ -5,33 +5,28 @@ import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
-public class DubboServiceWatcher implements Watcher
-{
-	private ZooKeeper zooKeeper;
+public class DubboServiceWatcher implements Watcher {
 
-	private int watchNumber = 0;
+  private ZooKeeper zooKeeper;
 
-	public DubboServiceWatcher(ZooKeeper zooKeeper)
-	{
-		this.zooKeeper = zooKeeper;
-	}
+  private int watchNumber = 0;
 
-	@Override
-	public void process(WatchedEvent event)
-	{
-		watchNumber = watchNumber + 1;
+  public DubboServiceWatcher(ZooKeeper zooKeeper) {
+    this.zooKeeper = zooKeeper;
+  }
 
-		System.out.println("第【 " + watchNumber + " 】次监听");
-		try
-		{
-			//打印元数据
-			Printer.testPrint(event);
-			//重新设置监听
-			zooKeeper.exists(event.getPath(), this);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+  @Override
+  public void process(WatchedEvent event) {
+    watchNumber = watchNumber + 1;
+
+    System.out.println("第【 " + watchNumber + " 】次监听");
+    try {
+      //打印元数据
+      Printer.testPrint(event);
+      //重新设置监听
+      zooKeeper.exists(event.getPath(), this);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 }

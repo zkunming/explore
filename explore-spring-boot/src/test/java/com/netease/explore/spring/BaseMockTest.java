@@ -8,13 +8,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BaseMockTest
-{
-	@Autowired
-	private SnowflakeIdWorker snowflakeIdWorker;
+public class BaseMockTest {
 
-	public String getDistributeId()
-	{
-		return String.valueOf(snowflakeIdWorker.nextId());
-	}
+  @Autowired
+  private SnowflakeIdWorker snowflakeIdWorker;
+
+  public String getDistributeId() {
+    return String.valueOf(snowflakeIdWorker.nextId());
+  }
 }

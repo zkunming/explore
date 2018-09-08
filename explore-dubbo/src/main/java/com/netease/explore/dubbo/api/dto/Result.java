@@ -2,24 +2,21 @@ package com.netease.explore.dubbo.api.dto;
 
 import java.io.Serializable;
 
-public class Result implements Serializable
-{
-	private static final long serialVersionUID = -4963266899668807475L;
+public class Result implements Serializable {
 
-	private String value;
+  private static final long serialVersionUID = -4963266899668807475L;
 
-	public Result(String value)
-	{
-		this.value = value;
-	}
+  private String value;
 
-	public String getValue()
-	{
-		return value;
-	}
+  public Result(String value) {
+    this.value = value;
+  }
 
-	public void setValue(String value)
-	{
-		this.value = value;
-	}
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
 }

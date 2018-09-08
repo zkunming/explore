@@ -9,17 +9,15 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>core</module>
+    <module>run-core</module>
+    <module>run-think</module>
     <module>explore-dubbo</module>
     <module>explore-netty</module>
     <module>explore-zookeeper</module>
     <module>explore-kafka</module>
     <module>explore-spring-boot</module>
     <module>explore-apache</module>
-    <module>think</module>
   </modules>
-
-
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>

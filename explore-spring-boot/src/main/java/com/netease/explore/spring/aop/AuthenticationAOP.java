@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class AuthenticationAOP
-{
+public class AuthenticationAOP {
+
 }

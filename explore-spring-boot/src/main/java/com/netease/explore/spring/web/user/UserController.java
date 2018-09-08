@@ -7,21 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController
-{
-	@Autowired
-	private UserService userService;
+public class UserController {
 
-	@RequestMapping("/user")
-	public User getUser()
-	{
-		User user = userService.findById("1");
-		return user;
-	}
+  @Autowired
+  private UserService userService;
 
-	@RequestMapping("/t")
-	public void transaction()
-	{
-		userService.transaction();
-	}
+  @RequestMapping("/user")
+  public User getUser() {
+    User user = userService.findById("1");
+    return user;
+  }
+
+  @RequestMapping("/t")
+  public void transaction() {
+    userService.transaction();
+  }
 }

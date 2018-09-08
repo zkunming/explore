@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * mock工具类
+ *
  * @author zhangkunming
  */
-public final class MockUtil
-{
-	@Autowired
-	private static SnowflakeIdWorker snowflakeIdWorker;
+public final class MockUtil {
 
-	{
-		snowflakeIdWorker = (SnowflakeIdWorker) SpringContext.getBean("snowflakeIdWorker");
-	}
+  @Autowired
+  private static SnowflakeIdWorker snowflakeIdWorker;
 
-	public static User getMockUser()
-	{
-		User user = new User();
-		//user.setId(snowflakeIdWorker.nextId());
-		user.setName(RandomUtils.getTeaRandom());
-		return user;
-	}
+  {
+    snowflakeIdWorker = (SnowflakeIdWorker) SpringContext.getBean("snowflakeIdWorker");
+  }
+
+  public static User getMockUser() {
+    User user = new User();
+    //user.setId(snowflakeIdWorker.nextId());
+    user.setName(RandomUtils.getTeaRandom());
+    return user;
+  }
 }

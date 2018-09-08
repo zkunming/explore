@@ -1,53 +1,47 @@
 package com.netease.explore.spring.service.user;
 
+import com.netease.explore.core.dao.BaseDaoServiceImpl;
 import com.netease.explore.spring.dao.UserDao;
 import com.netease.explore.spring.domain.User;
-import com.netease.explore.core.dao.BaseDaoServiceImpl;
 import com.netease.explore.spring.util.MockUtil;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * @author zhangkunming
  */
 @Service
-public class UserServiceImpl extends BaseDaoServiceImpl<User> implements UserService
-{
-	public UserService getUserService()
-	{
-		return userService;
-	}
+public class UserServiceImpl extends BaseDaoServiceImpl<User> implements UserService {
 
-	public void setUserService(UserService userService)
-	{
-		this.userService = userService;
-	}
+  public UserService getUserService() {
+    return userService;
+  }
 
-	@Autowired
-	private UserDao userDao;
+  public void setUserService(UserService userService) {
+    this.userService = userService;
+  }
 
-	public void inser(User user)
-	{
-		userDao.insert(user);
-	}
+  @Autowired
+  private UserDao userDao;
 
-	@Autowired
-	private UserService userService;
+  public void inser(User user) {
+    userDao.insert(user);
+  }
 
-	@Override
-	public List<User> findByName(String name)
-	{
-		return userService.findByName(name);
-	}
+  @Autowired
+  private UserService userService;
 
-	@Override
-	@Transactional(rollbackFor = Exception.class)
-	public void transaction()
-	{
-		userService.insert(MockUtil.getMockUser());
-		throw new RuntimeException("发生了运行一次了，观察数据库是否有回滚。");
-	}
+  @Override
+  public List<User> findByName(String name) {
+    return userService.findByName(name);
+  }
+
+  @Override
+  @Transactional(rollbackFor = Exception.class)
+  public void transaction() {
+    userService.insert(MockUtil.getMockUser());
+    throw new RuntimeException("发生了运行一次了，观察数据库是否有回滚。");
+  }
 }
