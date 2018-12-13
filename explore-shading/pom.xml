@@ -2,20 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.netease.explore</groupId>
     <artifactId>explore</artifactId>
+    <groupId>com.netease.explore</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-
-  <groupId>com.netease.explore</groupId>
-  <artifactId>spring-boot</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <artifactId>explore-shading-jdbc</artifactId>
 
   <properties>
+    <sharding-jdbc-version>3.0.0</sharding-jdbc-version>
     <mybatis-spring-boot-starter-version>1.3.2</mybatis-spring-boot-starter-version>
     <druid.version>1.1.0</druid.version>
     <core.version>1.0-SNAPSHOT</core.version>
@@ -23,13 +20,10 @@
   </properties>
 
   <dependencies>
-    <!-- ++++++++二方依赖++++++++ -->
-
-    <!-- explore依赖包 -->
     <dependency>
       <groupId>com.netease.explore</groupId>
       <artifactId>run-core</artifactId>
-      <version>${core.version}</version>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
     <!-- ++++++++三方依赖++++++++ -->
@@ -46,6 +40,13 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql-connector-java.version}</version>
+    </dependency>
+
+    <!-- shading-jdbc -->
+    <dependency>
+      <groupId>io.shardingsphere</groupId>
+      <artifactId>sharding-jdbc-core</artifactId>
+      <version>${sharding-jdbc-version}</version>
     </dependency>
 
 
@@ -89,6 +90,7 @@
 
   </dependencies>
 
+
   <build>
     <plugins>
       <plugin>
@@ -108,5 +110,6 @@
       </plugin>
     </plugins>
   </build>
+
 
 </project>

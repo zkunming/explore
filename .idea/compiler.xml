@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="explore-apache" />
+        <module name="explore-dubbo" />
+        <module name="explore-kafka" />
+        <module name="explore-netty" />
+        <module name="explore-react" />
+        <module name="explore-shading" />
+        <module name="explore-spring-boot" />
+        <module name="explore-zookeeper" />
+        <module name="run-core" />
+        <module name="run-think" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="explore" target="1.7" />
+      <module name="explore-apache" target="1.7" />
+      <module name="explore-dubbo" target="1.7" />
+      <module name="explore-kafka" target="1.7" />
+      <module name="explore-netty" target="1.7" />
+      <module name="explore-react" target="1.7" />
+      <module name="explore-shading" target="1.8" />
+      <module name="explore-spring-boot" target="1.8" />
+      <module name="explore-zookeeper" target="1.7" />
+      <module name="run-core" target="1.5" />
+      <module name="run-think" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

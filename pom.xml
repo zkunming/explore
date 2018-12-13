@@ -17,6 +17,8 @@
     <module>explore-kafka</module>
     <module>explore-spring-boot</module>
     <module>explore-apache</module>
+    <module>explore-shading</module>
+    <module>explore-react</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/explore.iml" filepath="$PROJECT_DIR$/explore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-apache/explore-apache.iml" filepath="$PROJECT_DIR$/explore-apache/explore-apache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-dubbo/explore-dubbo.iml" filepath="$PROJECT_DIR$/explore-dubbo/explore-dubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-kafka/explore-kafka.iml" filepath="$PROJECT_DIR$/explore-kafka/explore-kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-netty/explore-netty.iml" filepath="$PROJECT_DIR$/explore-netty/explore-netty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-react/explore-react.iml" filepath="$PROJECT_DIR$/explore-react/explore-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-shading/explore-shading.iml" filepath="$PROJECT_DIR$/explore-shading/explore-shading.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-spring-boot/explore-spring-boot.iml" filepath="$PROJECT_DIR$/explore-spring-boot/explore-spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/explore-zookeeper/explore-zookeeper.iml" filepath="$PROJECT_DIR$/explore-zookeeper/explore-zookeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/run-core/run-core.iml" filepath="$PROJECT_DIR$/run-core/run-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/run-think/run-think.iml" filepath="$PROJECT_DIR$/run-think/run-think.iml" />
+    </modules>
+  </component>
+</project>
