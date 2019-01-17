@@ -44,8 +44,6 @@ public class Task {
   private String note;
 
 
-
-
   /**
    * 概要：创建初始化状态的job
    */

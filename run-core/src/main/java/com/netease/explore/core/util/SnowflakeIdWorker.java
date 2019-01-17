@@ -1,5 +1,7 @@
 package com.netease.explore.core.util;
 
+import java.util.HashSet;
+
 public class SnowflakeIdWorker {
   // ==============================Fields===========================================
   /**
@@ -144,11 +146,17 @@ public class SnowflakeIdWorker {
    * 测试
    */
   public static void main(String[] args) throws InterruptedException {
+    HashSet<String> idSet = new HashSet<>();
     SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
-    for (int i = 0; i < 100; i++) {
+    int length = 100000000;
+    for (int i = 0; i < length; i++) {
       String id = idWorker.nextId();
-      Thread.sleep(1);
-      System.out.println(id);
+      if (!idSet.add(id)) {
+        System.out.println("该id重复了："+id);
+      }
+      if (i%10000 == 0) {
+        System.out.println("长度："+idSet.size());
+      }
     }
   }
 }

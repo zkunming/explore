@@ -1,4 +1,4 @@
-package com.netease.explore.core.util;
+package com.netease.explore.core.noProduct;
 
 import com.alibaba.fastjson.JSON;
 import java.io.UnsupportedEncodingException;

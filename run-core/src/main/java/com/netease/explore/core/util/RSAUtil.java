@@ -44,7 +44,8 @@ public class RSAUtil {
           + "KfonnjuPWSKtA8zN3GvjiA4IKehZN/oVbi7TEJrFfilIaCrYNyhBaI1l+1u6H0iS\n"
           + "Kzv+J3fEcmok6THJYQIDAQAB";
 
-  public void name() throws Exception {
+  public static void main(String[] args)
+      throws NoSuchAlgorithmException, SignatureException, InvalidKeySpecException, InvalidKeyException {
     String str = "i love you";
     //签名
     String signstr = sign(str, priKey);

@@ -1,10 +1,9 @@
 package com.netease.explore.shading.dao;
 
 import com.netease.explore.shading.domain.Task;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 @Mapper
 public interface TaskMapper {
@@ -17,6 +16,5 @@ public interface TaskMapper {
     int updateByPrimaryKeySelective(@Param("task") Task task);
 
     Task findById(@Param("id")Long id);
-
-
 }
+

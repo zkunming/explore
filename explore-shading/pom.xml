@@ -45,9 +45,15 @@
     <!-- shading-jdbc -->
     <dependency>
       <groupId>io.shardingsphere</groupId>
-      <artifactId>sharding-jdbc-core</artifactId>
+      <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
       <version>${sharding-jdbc-version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>io.shardingsphere</groupId>
+      <artifactId>mybatis-repository</artifactId>
+    </dependency>
+
 
 
     <!-- 阿里巴巴fasterJson -->
@@ -56,9 +62,8 @@
       <artifactId>druid</artifactId>
       <version>${druid.version}</version>
     </dependency>
-
-
     <!-- ++++spring相关依赖++++ -->
+
 
     <!-- spring-aop依赖 -->
     <dependency>
