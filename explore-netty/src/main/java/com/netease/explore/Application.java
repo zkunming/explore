@@ -1,6 +1,6 @@
 package com.netease.explore;
 
-import com.netease.explore.netty.DiscardServerHandler;
+import com.netease.explore.echo.EchoServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,15 +15,16 @@ public class Application {
   public static void main(String[] args) throws InterruptedException {
     ServerBootstrap serverBootstrap = new ServerBootstrap();
     EventLoopGroup bossGroup = new NioEventLoopGroup();
-    EventLoopGroup wokerGroup = new NioEventLoopGroup();
+    EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-    serverBootstrap.group(bossGroup, wokerGroup).channel(NioServerSocketChannel.class).childHandler(
-        new ChannelInitializer<SocketChannel>() {
-          @Override
-          protected void initChannel(SocketChannel ch) throws Exception {
-            ch.pipeline().addLast(new DiscardServerHandler());
-          }
-        })
+    serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+        .childHandler(
+            new ChannelInitializer<SocketChannel>() {
+              @Override
+              protected void initChannel(SocketChannel ch) throws Exception {
+                ch.pipeline().addLast(new EchoServerHandler());
+              }
+            })
         .option(ChannelOption.SO_BACKLOG, 128)
         .childOption(ChannelOption.SO_KEEPALIVE, true);
 

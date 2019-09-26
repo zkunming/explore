@@ -7,7 +7,7 @@ import com.google.common.cache.RemovalCause;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
 import com.google.common.collect.Lists;
-import com.netease.explore.core.noProduct.Printer;
+import com.netease.explore.core.util.Printer;
 import com.netease.explore.core.random.Water;
 import java.util.List;
 import java.util.concurrent.Callable;

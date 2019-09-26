@@ -1,8 +1,8 @@
 package com.netease.explore.zookeeper;
 
 import com.netease.explore.core.util.Printer;
-import com.netease.explore.zookeeper.common.ZookeeperConstant;
-import com.netease.explore.zookeeper.dto.Dubbo;
+import com.netease.explore.zookeeper.help.common.ZookeeperConstant;
+import com.netease.explore.zookeeper.help.dto.Dubbo;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -33,7 +33,6 @@ public class CuratorExample {
     //3、leader选举
     leaderExample();
     //4、扩展包[实现服务发现路--可以查看example]
-
     //[主线程无限等待、泡杯茶呗]
     CountDownLatch countDownLatch = new CountDownLatch(1);
     countDownLatch.await();

@@ -11,7 +11,7 @@ public class BaseDaoServiceImpl<T> implements BaseDaoService<T> {
 
   @PostConstruct
   public void init() {
-    Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+    /*Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
         .getActualTypeArguments()[0];
 
     String simpleName = entityClass.getSimpleName();
@@ -19,7 +19,7 @@ public class BaseDaoServiceImpl<T> implements BaseDaoService<T> {
     String lowerCase = firstWorld.toLowerCase();
     String beanName = lowerCase +
         simpleName.substring(1, simpleName.length()) + "Dao";
-    baseDao = (BaseDao<T>) SpringContext.getBean(beanName);
+    baseDao = (BaseDao<T>) SpringContext.getBean(beanName);*/
   }
 
   public void insert(T domain) {

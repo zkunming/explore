@@ -5,16 +5,19 @@ import com.netease.explore.core.dao.BaseDomain;
 /**
  * 用户
  */
-public class User extends BaseDomain {
+public class User {
 
-  /**
-   * 用户名
-   */
+  private Long id;
   private String name;
 
-  /**
-   * get、set方法
-   */
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public String getName() {
     return name;
   }

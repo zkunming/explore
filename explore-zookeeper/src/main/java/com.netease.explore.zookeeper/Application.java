@@ -2,7 +2,7 @@ package com.netease.explore.zookeeper;
 
 import com.netease.explore.core.random.RandomUtils;
 import com.netease.explore.core.util.Printer;
-import com.netease.explore.zookeeper.common.ZookeeperConstant;
+import com.netease.explore.zookeeper.help.common.ZookeeperConstant;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import org.apache.curator.framework.CuratorFramework;

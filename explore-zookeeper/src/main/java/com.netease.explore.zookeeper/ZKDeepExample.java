@@ -1,8 +1,8 @@
 package com.netease.explore.zookeeper;
 
 import com.google.common.collect.Lists;
-import com.netease.explore.zookeeper.common.ZookeeperConstant;
-import com.netease.explore.zookeeper.util.ZookeeperUtil;
+import com.netease.explore.zookeeper.help.common.ZookeeperConstant;
+import com.netease.explore.zookeeper.help.util.ZookeeperUtil;
 import com.netease.explore.zookeeper.watcher.DubboServiceWatcher;
 import com.netease.explore.zookeeper.watcher.ZooKeeperWatcher;
 import java.io.IOException;

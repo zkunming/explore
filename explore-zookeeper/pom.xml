@@ -20,7 +20,7 @@
     <!-- 内部框架 -->
     <dependency>
       <groupId>com.netease.explore</groupId>
-      <artifactId>explore-core</artifactId>
+      <artifactId>run-core</artifactId>
       <version>1.0-SNAPSHOT</version>
       <exclusions>
         <exclusion>
@@ -33,6 +33,8 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+
 
     <!-- 外部框架 -->
     <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
