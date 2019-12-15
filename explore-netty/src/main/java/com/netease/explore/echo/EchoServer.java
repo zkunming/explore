@@ -16,7 +16,11 @@
 package com.netease.explore.echo;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
@@ -24,6 +28,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
 
 /**
  * Discards any incoming data.
@@ -47,7 +52,6 @@ public final class EchoServer {
             public void initChannel(SocketChannel socketChannel) {
               ChannelPipeline pipeline = socketChannel.pipeline();
               pipeline.addLast(HANDLE_NAME, new EchoServerHandler());
-              pipeline.addLast(CUSTOMER_HANDLE, new CustomerHandle());
             }
           });
 
@@ -63,3 +67,52 @@ public final class EchoServer {
 
   }
 }
+class EchoServerHandler extends ChannelInboundHandlerAdapter {
+
+  @Override
+  public void channelRead(ChannelHandlerContext handlerContext, Object msg) throws Exception {
+    ByteBuf byteBuf = (ByteBuf) msg;
+
+
+    System.out.println("【服务端】收到请求："+byteBuf.toString(Charset.defaultCharset()));
+
+    if (true) {
+      throw new IllegalArgumentException("我是捣乱的...........");
+    }
+    String response = "我是服务端！";
+    StringBuilder stringBuilder = new StringBuilder();
+    int size = 1;
+    for (int i = 0; i < size; i++) {
+      stringBuilder.append(response);
+    }
+    ByteBuf responseB = Unpooled.copiedBuffer(stringBuilder.toString(), Charset.defaultCharset());
+    handlerContext.write(responseB);
+    handlerContext.fireChannelRead(response);
+
+  }
+  @Override
+  public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+    System.out.println("channelReadComplete.....");
+  }
+
+  @Override
+  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    cause.printStackTrace();
+    //关闭这个连接
+    ctx.close();
+  }
+}
+
+class CustomerHandle extends ChannelInboundHandlerAdapter {
+
+@Override
+public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    String preHandleResult = msg.toString();
+    System.out.println("CustomerHandle 接收到："+preHandleResult);
+
+    ctx.writeAndFlush(
+    Unpooled.copiedBuffer("CustomerHandle 接收到：" + preHandleResult, Charset.defaultCharset()));
+    }
+
+    }
+

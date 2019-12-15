@@ -16,15 +16,21 @@
 package com.netease.explore.echo;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.charset.Charset;
+import java.util.Map;
 
 /**
  * Keeps sending random data to the specified address.
@@ -35,12 +41,6 @@ public final class EchoClient {
   static final int PORT = Integer.parseInt(System.getProperty("port", "8009"));
 
   public static void main(String[] args) throws Exception {
-    Socket socket = null;
-    socket.isOutputShutdown();
-
-
-    OutputStream outputStream = socket.getOutputStream();
-
     EventLoopGroup group = new NioEventLoopGroup();
     try {
       Bootstrap bootstrap = new Bootstrap();
@@ -63,5 +63,29 @@ public final class EchoClient {
       System.out.println("[EchoClient] Hello world!");
       group.shutdownGracefully();
     }
+  }
+}
+class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
+
+
+  public static final EchoClientHandler newOne() {
+    EchoClientHandler clientHandler = new EchoClientHandler();
+    return clientHandler;
+  }
+
+  @Override
+  protected void channelRead0(ChannelHandlerContext ctx, ByteBuf byteBuf) throws Exception {
+    Map<String, ChannelHandler> stringChannelHandlerMap = ctx.pipeline().toMap();
+    System.out.println(stringChannelHandlerMap);
+    String response = byteBuf.toString(Charset.defaultCharset());
+    System.out.println("收到服务端的相应：" + response);
+  }
+
+  @Override
+  public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    ctx.channel().writeAndFlush("Hello");
+    ByteBuf buffer = ctx.alloc().buffer();
+    buffer.writeBytes("I am client!".getBytes());
+    ctx.writeAndFlush(buffer);
   }
 }

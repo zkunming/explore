@@ -20,6 +20,8 @@
     <module>explore-shading</module>
     <module>explore-react</module>
     <module>explore-spring-cloud</module>
+    <module>explore-rocketmq</module>
+    <module>algorithm</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>
