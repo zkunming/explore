@@ -23,7 +23,7 @@
 
 
   <properties>
-    <alibaba.fasterjson.version>1.2.47</alibaba.fasterjson.version>
+    <alibaba.fasterjson.version>1.2.83</alibaba.fasterjson.version>
     <google.guava.version>19.0</google.guava.version>
   </properties>
   <dependencies>
